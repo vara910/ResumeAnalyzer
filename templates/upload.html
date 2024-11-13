@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Files</title>
+</head>
+<body>
+    <h1>Upload Resumes and Job Description</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="job_description">Job Description:</label>
+        <textarea name="job_description" id="job_description" rows="4" cols="50"></textarea><br><br>
+        <label for="files">Select Resumes:</label>
+        <input type="file" name="files" id="files" multiple><br><br>
+        <input type="submit" value="Upload">
+    </form>
+    {% if messages %}
+        <h2>Results:</h2>
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if best_match %}
+        <h2>Best Match:</h2>
+        <p>{{ best_match[0] }}: Score {{ "%.2f" | format(best_match[1]) }}</p>
+    {% endif %}
+</body>
+</html>
