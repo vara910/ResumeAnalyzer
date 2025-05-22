@@ -55,42 +55,6 @@ python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk
 cp .env.example .env
 # Edit .env with your configuration
 ```
-## 📖 Usage Examples
-
-### Analyzing Resumes
-
-1. Log in to your account
-2. Click on "Analyze Resumes" in the navigation bar
-3. Enter the job title and job description
-4. Upload one or more resumes (PDF, DOCX, DOC, or TXT format)
-5. Select scoring weights (or use the default)
-6. Click "Analyze Resumes"
-7. View the results showing the best matches
-
-### Managing Scoring Weights
-
-1. Navigate to "Scoring Weights" in the dashboard
-2. Click "Create New Weights"
-3. Set custom values for skills, education, experience, and certifications (must sum to 1.0)
-4. Save your custom weights
-5. Use them in future analyses
-
-### Viewing Analysis History
-
-1. Navigate to "Analysis History" in the dashboard
-2. View all previous analyses with timestamps and job titles
-3. Click on any analysis to view detailed results
-4. Export results in various formats
-
-## 🔍 How It Works
-
-1. **Text Extraction**: The system extracts text from uploaded resume files
-2. **Preprocessing**: Both the resume text and job description are preprocessed using NLP techniques
-3. **Feature Extraction**: TF-IDF vectorization is used to extract features
-4. **Similarity Calculation**: Cosine similarity is calculated between each resume and the job description
-5. **Weighted Scoring**: Custom weights are applied to different aspects of the match
-6. **Results Visualization**: Results are displayed with detailed breakdowns and visualizations
-
 ## 🧪 Development Setup
 
 For developers who want to contribute or modify the application:
@@ -169,6 +133,42 @@ The application can be configured using environment variables or by editing the 
   - python-docx (DOCX processing)
   - textract (Text extraction)
 
+## 📖 Usage Examples
+
+### Analyzing Resumes
+
+1. Log in to your account
+2. Click on "Analyze Resumes" in the navigation bar
+3. Enter the job title and job description
+4. Upload one or more resumes (PDF, DOCX, DOC, or TXT format)
+5. Select scoring weights (or use the default)
+6. Click "Analyze Resumes"
+7. View the results showing the best matches
+
+### Managing Scoring Weights
+
+1. Navigate to "Scoring Weights" in the dashboard
+2. Click "Create New Weights"
+3. Set custom values for skills, education, experience, and certifications (must sum to 1.0)
+4. Save your custom weights
+5. Use them in future analyses
+
+### Viewing Analysis History
+
+1. Navigate to "Analysis History" in the dashboard
+2. View all previous analyses with timestamps and job titles
+3. Click on any analysis to view detailed results
+4. Export results in various formats
+
+## 🔍 How It Works
+
+1. **Text Extraction**: The system extracts text from uploaded resume files
+2. **Preprocessing**: Both the resume text and job description are preprocessed using NLP techniques
+3. **Feature Extraction**: TF-IDF vectorization is used to extract features
+4. **Similarity Calculation**: Cosine similarity is calculated between each resume and the job description
+5. **Weighted Scoring**: Custom weights are applied to different aspects of the match
+6. **Results Visualization**: Results are displayed with detailed breakdowns and visualizations
+
 ## 📊 Features in Detail
 
 ### Resume Analysis
@@ -228,56 +228,3 @@ SOFTWARE.
 Varaprasad- varaprasadmudiraj587@gmail.com
 
 Project Link: [https://github.com/vara910/resumeAnalyzer](https://github.com/vara910/resumeAnalyzer)
-
-## 📦 Installation
-
-### Requirements
-
-- Python 3.8 or higher
-- pip (Python package installer)
-- Virtual environment (recommended)
-
-### Step-by-Step Installation
-
-1. **Set up a virtual environment (recommended)**:
-   ```bash
-   python -m venv venv
-   # On Windows
-   venv\Scripts\activate
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Initialize the application**:
-   ```bash
-   python init.py
-   ```
-   This will:
-   - Create necessary directories
-   - Set up the database
-   - Create an admin user
-   - Set up default scoring weights
-
-4. **Run the application**:
-   ```bash
-   python app.py
-   ```
-
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📞 Contact
-
-If you have any questions or feedback, please open an issue on GitHub or contact the maintainer at example@example.com.
-
