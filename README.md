@@ -14,6 +14,149 @@ A sophisticated web application that uses AI algorithms to analyze resumes again
 
 ## 📸 Screenshots
 
+### Analysis Dashboard
+<img src="assets/images/dashboard.png" alt="Resume Analyzer Dashboard" width="800"/>
+
+*The main dashboard provides an overview of your analysis statistics and recent activities, with intuitive navigation to all key features.*
+
+### Analysis Results View
+<img src="assets/images/results.png" alt="Analysis Results Interface" width="800"/>
+
+*Detailed analysis results showing match scores, keyword highlighting, and multiple viewing options for better insight into each resume.*
+
+### Resume Upload Interface
+<img src="assets/images/upload.png" alt="Resume Upload Interface" width="800"/>
+
+*Clean and intuitive interface for uploading resumes and job descriptions, with support for multiple file formats.*
+
+## 🚀 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/resumeAnalyzer.git
+cd resumeAnalyzer
+```
+
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+4. Set up NLTK data:
+```bash
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('averaged_perceptron_tagger')"
+```
+
+5. Configure environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+## 💻 Usage
+
+1. Start the development server:
+```bash
+python app.py
+```
+
+2. Access the application at: `http://localhost:5000`
+
+3. Register an account and start analyzing resumes!
+
+## 🛠️ Technologies Used
+
+- **Backend**: Python, Flask
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Database**: SQLite/PostgreSQL
+- **NLP Processing**: NLTK, scikit-learn
+- **Document Processing**: 
+  - PyMuPDF (PDF processing)
+  - python-docx (DOCX processing)
+  - textract (Text extraction)
+
+## 📊 Features in Detail
+
+### Resume Analysis
+- Advanced text extraction from multiple file formats
+- Customizable scoring weights for different criteria
+- Intelligent keyword matching and scoring
+- Visual representation of match percentages
+
+### User Management
+- Secure user authentication
+- Profile management
+- Analysis history tracking
+- Custom scoring weights per user
+
+### Analytics & Reporting
+- Detailed match analysis
+- Visual charts and graphs
+- Exportable reports
+- Historical data tracking
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+MIT License
+
+Copyright (c) 2025 [Your Name]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## 📧 Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
+
+Project Link: [https://github.com/yourusername/resumeAnalyzer](https://github.com/yourusername/resumeAnalyzer)
+
+# Resume Analyzer
+
+A sophisticated web application that uses AI algorithms to analyze resumes against job descriptions, providing intelligent matching and scoring capabilities.
+
+## 🌟 Features
+
+- **Intelligent Resume Analysis**: Matches resumes against job descriptions using advanced NLP algorithms
+- **Multiple Format Support**: Handles PDF, DOCX, and TXT file formats
+- **Customizable Scoring**: Configure weights for different aspects (skills, education, experience)
+- **Detailed Analytics**: Visual representation of match scores with interactive charts
+- **Multiple View Options**: Table, Card, and Detail views for results
+- **Export Capabilities**: Export results in CSV and JSON formats
+- **User Management**: Secure user authentication and profile management
+
+## 📸 Screenshots
+
 ### Resume Analysis Dashboard
 ![Dashboard](outputs/Screenshot%202025-05-22%20080855.png)
 *Main dashboard showing analysis statistics and recent activities*
