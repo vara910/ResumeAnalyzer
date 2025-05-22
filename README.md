@@ -55,189 +55,6 @@ python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk
 cp .env.example .env
 # Edit .env with your configuration
 ```
-
-## 💻 Usage
-
-1. Start the development server:
-```bash
-python app.py
-```
-
-2. Access the application at: `http://localhost:5000`
-
-3. Register an account and start analyzing resumes!
-
-## 🛠️ Technologies Used
-
-- **Backend**: Python, Flask
-- **Frontend**: HTML5, CSS3, JavaScript
-- **Database**: SQLite/PostgreSQL
-- **NLP Processing**: NLTK, scikit-learn
-- **Document Processing**: 
-  - PyMuPDF (PDF processing)
-  - python-docx (DOCX processing)
-  - textract (Text extraction)
-
-## 📊 Features in Detail
-
-### Resume Analysis
-- Advanced text extraction from multiple file formats
-- Customizable scoring weights for different criteria
-- Intelligent keyword matching and scoring
-- Visual representation of match percentages
-
-### User Management
-- Secure user authentication
-- Profile management
-- Analysis history tracking
-- Custom scoring weights per user
-
-### Analytics & Reporting
-- Detailed match analysis
-- Visual charts and graphs
-- Exportable reports
-- Historical data tracking
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-MIT License
-
-Copyright (c) 2025 [Varaprasad]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## 📧 Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
-
-Project Link: [https://github.com/vara910/resumeAnalyzer](https://github.com/vara910/resumeAnalyzer)
-
-# Resume Analyzer
-
-A powerful tool that uses natural language processing and machine learning to analyze resumes against job descriptions, helping recruiters find the best candidates for their positions.
-
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![Flask](https://img.shields.io/badge/Flask-2.3.3-green)](https://flask.palletsprojects.com/)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple)](https://getbootstrap.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
-
-![Resume Analyzer Screenshot](https://via.placeholder.com/800x400?text=Resume+Analyzer+Screenshot)
-
-## 🚀 Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/vara910/ResumeAnalyzer.git
-cd ResumeAnalyzer
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Initialize the application (creates database, admin user, and directory structure)
-python init.py
-
-# Run the application
-python app.py
-```
-
-Then open your browser and navigate to [http://localhost:5000](http://localhost:5000)
-
-## 📋 Features
-
-- **Resume Analysis**: Compare multiple resumes against job descriptions to find the best match
-- **Custom Scoring Weights**: Set your own weights for skills, education, experience, and certifications
-- **Multiple File Formats**: Support for PDF, DOCX, DOC, and TXT resume formats
-- **Visual Results**: Interactive visualizations of matching scores and comparisons
-- **User Authentication**: Secure account management with role-based access control
-- **History Tracking**: Save and review previous analyses
-- **Export Options**: Export results in CSV, JSON, or PDF formats
-- **Responsive Design**: Works on desktop and mobile devices
-
-## 📦 Installation
-
-### Requirements
-
-- Python 3.8 or higher
-- pip (Python package installer)
-- Virtual environment (recommended)
-
-### Step-by-Step Installation
-
-1. **Set up a virtual environment (recommended)**:
-   ```bash
-   python -m venv venv
-   # On Windows
-   venv\Scripts\activate
-   # On macOS/Linux
-   source venv/bin/activate
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Initialize the application**:
-   ```bash
-   python init.py
-   ```
-   This will:
-   - Create necessary directories
-   - Set up the database
-   - Create an admin user
-   - Set up default scoring weights
-
-4. **Run the application**:
-   ```bash
-   python app.py
-   ```
-
-## 🔧 Configuration
-
-The application can be configured using environment variables or by editing the configuration section in the `app.py` file.
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `SECRET_KEY` | Secret key for session security | dev_key_replace_in_production |
-| `SECURITY_PASSWORD_SALT` | Salt for password security | salt_replace_in_production |
-| `MAIL_SERVER` | SMTP server for sending emails | smtp.example.com |
-| `MAIL_PORT` | SMTP port | 587 |
-| `MAIL_USE_TLS` | Use TLS for email | True |
-| `MAIL_USERNAME` | SMTP username | user@example.com |
-| `MAIL_PASSWORD` | SMTP password | password |
-| `ADMIN_PASSWORD` | Default admin password | admin |
-| `FLASK_DEBUG` | Run in debug mode | False |
-| `FLASK_HOST` | Host to bind to | 0.0.0.0 |
-| `FLASK_PORT` | Port to bind to | 5000 |
-
 ## 📖 Usage Examples
 
 ### Analyzing Resumes
@@ -319,6 +136,138 @@ For developers who want to contribute or modify the application:
    ├── logs/               # Log files (created at runtime)
    └── instance/           # Instance-specific data (created at runtime)
    ```
+
+
+## 🔧 Configuration
+
+The application can be configured using environment variables or by editing the configuration section in the `app.py` file.
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `SECRET_KEY` | Secret key for session security | dev_key_replace_in_production |
+| `SECURITY_PASSWORD_SALT` | Salt for password security | salt_replace_in_production |
+| `MAIL_SERVER` | SMTP server for sending emails | smtp.example.com |
+| `MAIL_PORT` | SMTP port | 587 |
+| `MAIL_USE_TLS` | Use TLS for email | True |
+| `MAIL_USERNAME` | SMTP username | user@example.com |
+| `MAIL_PASSWORD` | SMTP password | password |
+| `ADMIN_PASSWORD` | Default admin password | admin |
+| `FLASK_DEBUG` | Run in debug mode | False |
+| `FLASK_HOST` | Host to bind to | 0.0.0.0 |
+| `FLASK_PORT` | Port to bind to | 5000 |
+
+## 🛠️ Technologies Used
+
+- **Backend**: Python, Flask
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Database**: SQLite/PostgreSQL
+- **NLP Processing**: NLTK, scikit-learn
+- **Document Processing**: 
+  - PyMuPDF (PDF processing)
+  - python-docx (DOCX processing)
+  - textract (Text extraction)
+
+## 📊 Features in Detail
+
+### Resume Analysis
+- Advanced text extraction from multiple file formats
+- Customizable scoring weights for different criteria
+- Intelligent keyword matching and scoring
+- Visual representation of match percentages
+
+### User Management
+- Secure user authentication
+- Profile management
+- Analysis history tracking
+- Custom scoring weights per user
+
+### Analytics & Reporting
+- Detailed match analysis
+- Visual charts and graphs
+- Exportable reports
+- Historical data tracking
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+MIT License
+
+Copyright (c) 2025 [Varaprasad]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## 📧 Contact
+
+Varaprasad- varaprasadmudiraj587@gmail.com
+
+Project Link: [https://github.com/vara910/resumeAnalyzer](https://github.com/vara910/resumeAnalyzer)
+
+## 📦 Installation
+
+### Requirements
+
+- Python 3.8 or higher
+- pip (Python package installer)
+- Virtual environment (recommended)
+
+### Step-by-Step Installation
+
+1. **Set up a virtual environment (recommended)**:
+   ```bash
+   python -m venv venv
+   # On Windows
+   venv\Scripts\activate
+   # On macOS/Linux
+   source venv/bin/activate
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Initialize the application**:
+   ```bash
+   python init.py
+   ```
+   This will:
+   - Create necessary directories
+   - Set up the database
+   - Create an admin user
+   - Set up default scoring weights
+
+4. **Run the application**:
+   ```bash
+   python app.py
+   ```
+
 
 ## 🤝 Contributing
 
