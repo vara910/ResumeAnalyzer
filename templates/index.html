@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row align-items-center my-5">
+    <!-- Hero Section -->
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold mb-4">Find the perfect match for your job</h1>
+        <p class="lead text-muted mb-4">
+            Resume Analyzer uses advanced AI algorithms to match the best candidates with your job descriptions.
+            Upload multiple resumes and instantly see which candidates are the best fit.
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-4 me-md-2">
+                <i class="fas fa-user-plus me-2"></i>Sign Up
+            </a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary btn-lg px-4">
+                <i class="fas fa-sign-in-alt me-2"></i>Login
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <img src="https://source.unsplash.com/random/600x400/?office,resume" class="img-fluid rounded shadow-lg" alt="Resume Analysis">
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="row mt-5 pt-5 text-center">
+    <div class="col-12">
+        <h2 class="display-5 fw-bold mb-5">Why choose Resume Analyzer?</h2>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="card-title h4">Fast Analysis</h3>
+                <p class="card-text text-muted">
+                    Process dozens of resumes in seconds, saving hours of manual review time.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3 class="card-title h4">Accurate Results</h3>
+                <p class="card-text text-muted">
+                    Advanced algorithms match skills and experiences to your job requirements with high precision.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="feature-icon text-primary mb-3">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="card-title h4">Customizable</h3>
+                <p class="card-text text-muted">
+                    Set custom weights for skills, education, experience, and more to match your priorities.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="row mt-5 pt-5">
+    <div class="col-12 text-center mb-5">
+        <h2 class="display-5 fw-bold">How It Works</h2>
+        <p class="lead text-muted">Three simple steps to find your perfect candidate</p>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2rem;">
+                    1
+                </div>
+                <h4>Upload Job Description</h4>
+                <p class="text-muted">
+                    Enter your job requirements and what you're looking for in an ideal candidate.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2rem;">
+                    2
+                </div>
+                <h4>Add Candidate Resumes</h4>
+                <p class="text-muted">
+                    Upload multiple resumes at once in PDF, DOCX, or TXT formats.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 border-0">
+            <div class="card-body text-center">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2rem;">
+                    3
+                </div>
+                <h4>Review Results</h4>
+                <p class="text-muted">
+                    Get instant match scores and find the best candidates for your position.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="row my-5 pt-5">
+    <div class="col-12 text-center">
+        <div class="p-5 bg-light rounded-3 shadow-sm">
+            <h2 class="display-6 fw-bold mb-4">Ready to find your perfect match?</h2>
+            <p class="lead mb-4">
+                Join thousands of recruiters who have streamlined their hiring process.
+            </p>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg px-5 py-3">
+                Get Started Now
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

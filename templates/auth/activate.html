@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Your Resume Analyzer Account</title>
+    <style type="text/css">
+        /* Email-specific styles that work across most clients */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333333;
+        }
+        
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .email-header {
+            background-color: #007bff;
+            padding: 24px;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .email-body {
+            padding: 30px;
+        }
+        
+        .email-footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+        }
+        
+        h2 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .security-note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-4 {
+            margin-top: 40px;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1><i class="fas fa-file-alt" style="margin-right: 10px;"></i>Resume Analyzer</h1>
+        </div>
+        
+        <div class="email-body">
+            <h2>Welcome to Resume Analyzer!</h2>
+            
+            <p>Hello {{ user.full_name or user.username }},</p>
+            
+            <p>Thank you for registering with Resume Analyzer. We're excited to help you find the best candidates for your positions by analyzing resumes against job descriptions.</p>
+            
+            <p>To activate your account and verify your email address, please click the button below:</p>
+            
+            <div class="text-center">
+                <a href="{{ confirm_url }}" class="button">Activate Account</a>
+            </div>
+            
+            <div class="security-note">
+                <strong>Security Note:</strong> This activation link will expire in 24 hours for security reasons. If you didn't create an account, you can safely ignore this email.
+            </div>
+            
+            <p>Once your account is activated, you'll be able to upload job descriptions and candidate resumes to find the best matches quickly and efficiently.</p>
+            
+            <p>We're glad you've joined us!</p>
+            
+            <p>Best regards,<br>
+            The Resume Analyzer Team</p>
+            
+            <div class="contact-info">
+                <p><strong>Need help?</strong> If you have any questions or require assistance, please contact our support team:</p>
+                <p>Email: <a href="mailto:support@resumeanalyzer.com">support@resumeanalyzer.com</a><br>
+                Phone: +1 (555) 123-4567<br>
+                Hours: Monday - Friday, 9 AM - 5 PM EST</p>
+            </div>
+        </div>
+        
+        <div class="email-footer">
+            <p>&copy; 2025 Resume Analyzer. All rights reserved.</p>
+            <p>
+                <a href="#" style="color: #6c757d; text-decoration: underline;">Privacy Policy</a> |
+                <a href="#" style="color: #6c757d; text-decoration: underline;">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Plain text alternative -->
+    <!--
+    Welcome to Resume Analyzer!
+    
+    Hello {{ user.full_name or user.username }},
+    
+    Thank you for registering with Resume Analyzer. We're excited to help you find the best candidates for your positions by analyzing resumes against job descriptions.
+    
+    To activate your account and verify your email address, please visit the following URL:
+    {{ confirm_url }}
+    
+    This activation link will expire in 24 hours for security reasons. If you didn't create an account, you can safely ignore this email.
+    
+    Once your account is activated, you'll be able to upload job descriptions and candidate resumes to find the best matches quickly and efficiently.
+    
+    We're glad you've joined us!
+    
+    Best regards,
+    The Resume Analyzer Team
+    
+    -----------------------
+    Need help? Contact support:
+    Email: support@resumeanalyzer.com
+    Phone: +1 (555) 123-4567
+    Hours: Monday - Friday, 9 AM - 5 PM EST
+    
+    © 2025 Resume Analyzer. All rights reserved.
+    -->
+</body>
+</html>
+

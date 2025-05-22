@@ -1,0 +1,511 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Resume Analyzer{% endblock %}
+
+{% block styles %}
+<style>
+    .stat-card {
+        transition: all 0.3s;
+    }
+    .stat-card:hover {
+        transform: translateY(-5px);
+    }
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #007bff;
+    }
+    .stat-label {
+        color: #6c757d;
+        font-size: 1rem;
+    }
+    .activity-timeline {
+        position: relative;
+        padding-left: 50px;
+    }
+    .activity-timeline::before {
+        content: '';
+        position: absolute;
+        left: 24px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background-color: #e9ecef;
+    }
+    .activity-item {
+        position: relative;
+        padding-bottom: 1.5rem;
+    }
+    .activity-dot {
+        position: absolute;
+        left: -38px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #007bff;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 2px #007bff;
+    }
+    .chart-container {
+        height: 300px;
+    }
+    .quick-action-btn {
+        text-align: left;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        transition: all 0.2s;
+    }
+    .quick-action-btn:hover {
+        transform: translateX(5px);
+    }
+    .quick-action-icon {
+        display: inline-flex;
+        width: 45px;
+        height: 45px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+    .admin-stat-card {
+        border-left: 4px solid;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-0">Dashboard</h1>
+        <p class="text-muted">Welcome back, {{ current_user.full_name or current_user.username }}!</p>
+    </div>
+</div>
+
+<!-- User Stats -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card stat-card h-100">
+            <div class="card-body text-center p-4">
+                <div class="d-inline-flex mb-3 p-3 rounded-circle bg-primary bg-opacity-10">
+                    <i class="fas fa-chart-line fa-2x text-primary"></i>
+                </div>
+                <div class="stat-value">{{ total_analyses }}</div>
+                <div class="stat-label">Total Analyses</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card stat-card h-100">
+            <div class="card-body text-center p-4">
+                <div class="d-inline-flex mb-3 p-3 rounded-circle bg-success bg-opacity-10">
+                    <i class="fas fa-file-alt fa-2x text-success"></i>
+                </div>
+                <div class="stat-value">{{ total_resumes }}</div>
+                <div class="stat-label">Resumes Analyzed</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card stat-card h-100">
+            <div class="card-body text-center p-4">
+                <div class="d-inline-flex mb-3 p-3 rounded-circle bg-info bg-opacity-10">
+                    <i class="fas fa-calendar-alt fa-2x text-info"></i>
+                </div>
+                <div class="stat-value">{{ days_active }}</div>
+                <div class="stat-label">Days Active</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Stats (visible only to admins) -->
+{% if current_user.is_admin and admin_stats %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h5 class="border-bottom pb-2 mb-3">Admin Statistics</h5>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card admin-stat-card h-100" style="border-color: #007bff;">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-users fa-2x text-primary"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Users</h6>
+                        <h4 class="mb-0">{{ admin_stats.user_count }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card admin-stat-card h-100" style="border-color: #28a745;">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-user-check fa-2x text-success"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Active Users</h6>
+                        <h4 class="mb-0">{{ admin_stats.active_users }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card admin-stat-card h-100" style="border-color: #dc3545;">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-user-times fa-2x text-danger"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Inactive Users</h6>
+                        <h4 class="mb-0">{{ admin_stats.inactive_users }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card admin-stat-card h-100" style="border-color: #ffc107;">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-chart-pie fa-2x text-warning"></i>
+                    </div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Analyses</h6>
+                        <h4 class="mb-0">{{ admin_stats.total_system_analyses }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Data Visualization -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">User Activity</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="userActivityChart" class="chart-container"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-0">Analysis Distribution</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="analysisDistributionChart" class="chart-container"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Main Content Columns -->
+<div class="row">
+    <!-- Left Column -->
+    <div class="col-lg-8">
+        <!-- Performance Metrics -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Performance Metrics</h5>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="timeRangeDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Last 30 Days
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="timeRangeDropdown">
+                        <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+                        <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                        <li><a class="dropdown-item" href="#">Last 90 Days</a></li>
+                        <li><a class="dropdown-item" href="#">All Time</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="metricsChart" class="chart-container" style="height: 250px;"></canvas>
+            </div>
+        </div>
+        
+        <!-- Recent Analyses -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Recent Analyses</h5>
+                <a href="{{ url_for('main.history') }}" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Date</th>
+                                <th>Resumes</th>
+                                <th>Best Match</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if recent_analyses %}
+                                {% for analysis in recent_analyses %}
+                                <tr>
+                                    <td>{{ analysis.job_title }}</td>
+                                    <td>{{ analysis.created_at.strftime('%Y-%m-%d') }}</td>
+                                    <td>{{ analysis.resume_files.count() }}</td>
+                                    <td>
+                                        {% if analysis.best_match_score %}
+                                            <div class="progress" style="height: 6px; width: 100px;">
+                                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ analysis.best_match_score * 100 }}%"></div>
+                                            </div>
+                                            <small class="text-muted">{{ "%.0f" | format(analysis.best_match_score * 100) }}%</small>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('main.analysis_results', analysis_id=analysis.id) }}" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="5" class="text-center py-4">
+                                        <div class="text-muted">
+                                            <i class="fas fa-info-circle me-2"></i> No analyses yet.
+                                            <a href="{{ url_for('main.analyze') }}">Start your first analysis</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Column -->
+    <div class="col-lg-4">
+        <!-- Quick Actions -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Quick Actions</h5>
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('main.analyze') }}" class="btn btn-light quick-action-btn d-flex align-items-center w-100">
+                    <span class="quick-action-icon bg-primary bg-opacity-10 text-primary">
+                        <i class="fas fa-file-upload"></i>
+                    </span>
+                    <span>
+                        <strong class="d-block">New Analysis</strong>
+                        <small class="text-muted">Upload resumes and job description</small>
+                    </span>
+                </a>
+                
+                <a href="{{ url_for('main.weights') }}" class="btn btn-light quick-action-btn d-flex align-items-center w-100">
+                    <span class="quick-action-icon bg-success bg-opacity-10 text-success">
+                        <i class="fas fa-sliders-h"></i>
+                    </span>
+                    <span>
+                        <strong class="d-block">Scoring Weights</strong>
+                        <small class="text-muted">Customize analysis parameters</small>
+                    </span>
+                </a>
+                
+                <a href="{{ url_for('main.history') }}" class="btn btn-light quick-action-btn d-flex align-items-center w-100">
+                    <span class="quick-action-icon bg-info bg-opacity-10 text-info">
+                        <i class="fas fa-history"></i>
+                    </span>
+                    <span>
+                        <strong class="d-block">Analysis History</strong>
+                        <small class="text-muted">View previous results</small>
+                    </span>
+                </a>
+                
+                {% if current_user.is_admin %}
+                <a href="{{ url_for('auth.users') }}" class="btn btn-light quick-action-btn d-flex align-items-center w-100">
+                    <span class="quick-action-icon bg-warning bg-opacity-10 text-warning">
+                        <i class="fas fa-users-cog"></i>
+                    </span>
+                    <span>
+                        <strong class="d-block">User Management</strong>
+                        <small class="text-muted">Manage system users</small>
+                    </span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Activity Timeline -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Activity Timeline</h5>
+            </div>
+            <div class="card-body">
+                <div class="activity-timeline">
+                    {% if recent_analyses %}
+                        {% for analysis in recent_analyses %}
+                        <div class="activity-item">
+                            <div class="activity-dot"></div>
+                            <div class="d-flex w-100 justify-content-between mb-1">
+                                <h6 class="mb-0">{{ analysis.job_title or 'Untitled Analysis' }}</h6>
+                                <small class="text-muted">{{ analysis.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                            </div>
+                            <p class="text-muted mb-0">
+                                Analyzed {{ analysis.resume_files.count() }} resume{% if analysis.resume_files.count() != 1 %}s{% endif %}
+                                {% if analysis.best_match_score %}
+                                with best match of {{ "%.0f" | format(analysis.best_match_score * 100) }}%
+                                {% endif %}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-4">
+                            <div class="mb-3">
+                                <i class="fas fa-history fa-4x text-muted"></i>
+                            </div>
+                            <p class="text-muted">No activity yet</p>
+                            <a href="{{ url_for('main.analyze') }}" class="btn btn-sm btn-primary">
+                                Start Your First Analysis
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Performance Metrics Chart
+        const metricsCtx = document.getElementById('metricsChart');
+        if (metricsCtx) {
+            new Chart(metricsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Analyses',
+                        data: [{{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}, {{ total_analyses }}].map(() => Math.floor(Math.random() * 10)),
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true
+                    }, {
+                        label: 'Resumes',
+                        data: [{{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}, {{ total_resumes }}].map(() => Math.floor(Math.random() * 20)),
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                display: true,
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
+        
+        {% if current_user.is_admin and admin_stats %}
+        // Admin Charts
+        const userActivityCtx = document.getElementById('userActivityChart');
+        if (userActivityCtx) {
+            new Chart(userActivityCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                    datasets: [{
+                        label: 'User Activity',
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                        backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        const distributionCtx = document.getElementById('analysisDistributionChart');
+        if (distributionCtx) {
+            new Chart(distributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['High Match (>70%)', 'Medium Match (40-70%)', 'Low Match (<40%)'],
+                    datasets: [{
+                        data: [70, 20, 10],
+                        backgroundColor: [
+                            'rgba(40, 167, 69, 0.7)',
+                            'rgba(255, 193, 7, 0.7)',
+                            'rgba(220, 53, 69, 0.7)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+        }
+        {% endif %}
+    });
+</script>
+{% endblock %}

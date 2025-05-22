@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="card">
+            <div class="card-body py-5">
+                <div class="mb-4 text-muted">
+                    <i class="fas fa-exclamation-triangle fa-5x"></i>
+                </div>
+                
+                <h1 class="display-4 fw-bold text-danger mb-4">500</h1>
+                <h2 class="mb-4">Internal Server Error</h2>
+                
+                <p class="lead text-muted mb-5">
+                    Something went wrong on our servers while processing your request. This is not your fault, and our technical team has been notified of the issue.
+                </p>
+                
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-8">
+                        <div class="alert alert-light">
+                            <h5>What you can do:</h5>
+                            <ul class="text-start">
+                                <li>Refresh the page and try again</li>
+                                <li>Try again later as the issue might be temporary</li>
+                                <li>Clear your browser cache and cookies</li>
+                                <li>If the problem persists, please contact support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary me-2">
+                        <i class="fas fa-home me-1"></i> Return to Home
+                    </a>
+                    <button onclick="history.back()" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Go Back
+                    </button>
+                </div>
+                
+                <div class="mt-4 border-top pt-4">
+                    <h5 class="mb-3">Report this issue</h5>
+                    <p class="text-muted small">
+                        If this issue continues, please contact our support team with the time of the error and what you were trying to do.
+                    </p>
+                    <a href="mailto:support@resumeanalyzer.com?subject=Server Error Report" class="btn btn-sm btn-outline-danger">
+                        <i class="fas fa-bug me-1"></i> Report Error
+                    </a>
+                    <p class="mt-3 small text-muted">
+                        Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

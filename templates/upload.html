@@ -2,28 +2,322 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload Files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .result-card {
+            border-left: 5px solid;
+        }
+        .high-match {
+            border-color: #28a745;
+        }
+        .medium-match {
+            border-color: #ffc107;
+        }
+        .low-match {
+            border-color: #dc3545;
+        }
+        .best-match-card {
+            border: 2px solid #28a745;
+            background-color: rgba(40, 167, 69, 0.05);
+        }
+        .progress-bar {
+            height: 10px;
+            border-radius: 5px;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        .app-title {
+            color: #3a3a3a;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .file-upload-wrapper {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .file-upload-input {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .file-upload-input:hover {
+            border-color: #007bff;
+            background-color: rgba(0, 123, 255, 0.05);
+        }
+        .file-names {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            display: none;
+        }
+        .error-feedback {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .score-pill {
+            font-size: 18px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload Resumes and Job Description</h1>
-    <form method="post" enctype="multipart/form-data">
-        <label for="job_description">Job Description:</label>
-        <textarea name="job_description" id="job_description" rows="4" cols="50"></textarea><br><br>
-        <label for="files">Select Resumes:</label>
-        <input type="file" name="files" id="files" multiple><br><br>
-        <input type="submit" value="Upload">
-    </form>
-    {% if messages %}
-        <h2>Results:</h2>
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    {% if best_match %}
-        <h2>Best Match:</h2>
-        <p>{{ best_match[0] }}: Score {{ "%.2f" | format(best_match[1]) }}</p>
-    {% endif %}
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="ms-3 fw-bold">Processing resumes...</div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center app-title">
+            <i class="fas fa-file-alt me-2"></i>Resume Analyzer
+        </h1>
+        
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-upload me-2"></i>Upload Resumes and Job Description</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" id="resumeForm" novalidate>
+                    <div class="mb-4">
+                        <label for="job_description" class="form-label fw-bold">Job Description:</label>
+                        <textarea name="job_description" id="job_description" class="form-control" 
+                                  rows="4" placeholder="Paste the job description here..." required></textarea>
+                        <div class="invalid-feedback">Please enter a job description.</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="files" class="form-label fw-bold">Select Resumes:</label>
+                        <div class="file-upload-wrapper">
+                            <div class="file-upload-input" id="fileUploadBox">
+                                <i class="fas fa-cloud-upload-alt fa-2x mb-2 text-primary"></i>
+                                <h5>Drag and drop files or click to browse</h5>
+                                <p class="text-muted">Accepted file formats: PDF, DOCX, TXT</p>
+                                <input type="file" name="files" id="files" class="d-none" multiple required 
+                                       accept=".pdf,.docx,.doc,.txt">
+                            </div>
+                            <div class="error-feedback" id="fileError">Please select at least one resume file.</div>
+                            <div class="file-names" id="fileNames"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                            <i class="fas fa-search me-2"></i>Analyze Resumes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        {% if messages %}
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Analysis Results</h5>
+            </div>
+            <div class="card-body">
+                {% if best_match %}
+                <div class="alert alert-success mb-4">
+                    <h5 class="alert-heading"><i class="fas fa-trophy me-2"></i>Best Match</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-1">{{ best_match[0] }}</h6>
+                        </div>
+                        <div>
+                            <span class="score-pill bg-success text-white">
+                                {{ "%.2f" | format(best_match[1] * 100) }}%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <h5 class="mb-3">All Results:</h5>
+                <div class="row">
+                    {% for message in messages %}
+                        {% set parts = message.split(': Score ') %}
+                        {% set filename = parts[0] %}
+                        {% set score = parts[1]|float %}
+                        
+                        {% if score > 0.7 %}
+                            {% set match_class = "high-match" %}
+                            {% set bg_class = "bg-success" %}
+                        {% elif score > 0.4 %}
+                            {% set match_class = "medium-match" %}
+                            {% set bg_class = "bg-warning" %}
+                        {% else %}
+                            {% set match_class = "low-match" %}
+                            {% set bg_class = "bg-danger" %}
+                        {% endif %}
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="card result-card {{ match_class }}">
+                                <div class="card-body">
+                                    <h6 class="card-title text-truncate" title="{{ filename }}">
+                                        <i class="fas fa-file-alt me-2"></i>{{ filename }}
+                                    </h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="progress w-75">
+                                            <div class="progress-bar {{ bg_class }}" role="progressbar" 
+                                                 style="width: {{ score * 100 }}%" 
+                                                 aria-valuenow="{{ score * 100 }}" aria-valuemin="0" aria-valuemax="100">
+                                            </div>
+                                        </div>
+                                        <span class="badge {{ bg_class }}">{{ "%.0f" | format(score * 100) }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('resumeForm');
+            const fileInput = document.getElementById('files');
+            const fileUploadBox = document.getElementById('fileUploadBox');
+            const fileNames = document.getElementById('fileNames');
+            const fileError = document.getElementById('fileError');
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            // Make the entire upload box clickable
+            fileUploadBox.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            // Drag and drop functionality
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileUploadBox.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileUploadBox.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileUploadBox.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                fileUploadBox.classList.add('border-primary');
+                fileUploadBox.style.backgroundColor = 'rgba(0, 123, 255, 0.1)';
+            }
+            
+            function unhighlight() {
+                fileUploadBox.classList.remove('border-primary');
+                fileUploadBox.style.backgroundColor = '';
+            }
+            
+            fileUploadBox.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                fileInput.files = files;
+                updateFileList();
+            }
+            
+            // Display filenames when files are selected
+            fileInput.addEventListener('change', updateFileList);
+            
+            function updateFileList() {
+                if (fileInput.files.length > 0) {
+                    fileNames.style.display = 'block';
+                    fileNames.innerHTML = '';
+                    
+                    for (let i = 0; i < fileInput.files.length; i++) {
+                        const fileItem = document.createElement('div');
+                        fileItem.innerHTML = `<i class="fas fa-file-alt me-2"></i>${fileInput.files[i].name}`;
+                        fileNames.appendChild(fileItem);
+                    }
+                    
+                    fileError.style.display = 'none';
+                } else {
+                    fileNames.style.display = 'none';
+                }
+            }
+            
+            // Form validation
+            form.addEventListener('submit', function(event) {
+                let isValid = true;
+                
+                // Job description validation
+                const jobDescription = document.getElementById('job_description');
+                if (!jobDescription.value.trim()) {
+                    jobDescription.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    jobDescription.classList.remove('is-invalid');
+                }
+                
+                // File validation
+                if (fileInput.files.length === 0) {
+                    fileError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    fileError.style.display = 'none';
+                }
+                
+                if (!isValid) {
+                    event.preventDefault();
+                } else {
+                    // Show loading overlay
+                    loadingOverlay.style.display = 'flex';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

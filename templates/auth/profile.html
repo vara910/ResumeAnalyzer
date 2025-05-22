@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile - Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- User Info Sidebar -->
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-user-circle me-2"></i>Account Info</h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="avatar-circle mx-auto mb-3" style="width: 80px; height: 80px; font-size: 1.8rem;">
+                    {{ current_user.username[0].upper() }}
+                </div>
+                <h5 class="mb-0">{{ current_user.username }}</h5>
+                <p class="text-muted">{{ current_user.full_name or 'No name provided' }}</p>
+                <p class="mb-1">
+                    <i class="fas fa-envelope me-2 text-muted"></i>{{ current_user.email }}
+                </p>
+                
+                <hr>
+                
+                <div class="account-stats mt-3 text-start">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted"><i class="fas fa-calendar-alt me-2"></i>Joined:</span>
+                        <span>{{ current_user.created_at.strftime('%b %d, %Y') }}</span>
+                    </div>
+                    {% if current_user.last_login %}
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted"><i class="fas fa-clock me-2"></i>Last Login:</span>
+                        <span>{{ current_user.last_login.strftime('%b %d, %Y %H:%M') }}</span>
+                    </div>
+                    {% endif %}
+                    {% if current_user.is_admin %}
+                    <div class="alert alert-info mt-3 mb-0">
+                        <i class="fas fa-shield-alt me-2"></i>Administrator Account
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Links -->
+        <div class="list-group mt-3">
+            <a href="{{ url_for('main.dashboard') }}" class="list-group-item list-group-item-action">
+                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+            <a href="{{ url_for('main.history') }}" class="list-group-item list-group-item-action">
+                <i class="fas fa-history me-2"></i>Analysis History
+            </a>
+            <a href="{{ url_for('main.weights') }}" class="list-group-item list-group-item-action">
+                <i class="fas fa-sliders-h me-2"></i>Scoring Weights
+            </a>
+            {% if current_user.is_admin %}
+            <a href="{{ url_for('auth.users') }}" class="list-group-item list-group-item-action">
+                <i class="fas fa-users-cog me-2"></i>User Management
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Profile Edit Form -->
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Profile</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{{ url_for('auth.profile') }}" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-3">
+                        {{ form.full_name.label(class="form-label") }}
+                        {{ form.full_name(class="form-control" + (" is-invalid" if form.full_name.errors else ""), placeholder="Enter your full name") }}
+                        {% if form.full_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.full_name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), placeholder="Enter your email") }}
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <hr>
+                    <h5 class="mb-3"><i class="fas fa-key me-2"></i>Change Password</h5>
+                    <p class="text-muted small mb-3">Leave blank if you don't want to change your password</p>
+                    
+                    <div class="mb-3">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="Enter new password") }}
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.password2.label(class="form-label") }}
+                        {{ form.password2(class="form-control" + (" is-invalid" if form.password2.errors else ""), placeholder="Confirm new password") }}
+                        {% if form.password2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password2.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Account Security -->
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Account Security</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-4">Keep your account secure by following these best practices:</p>
+                
+                <div class="mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <h6 class="mb-0">Use a strong password</h6>
+                    </div>
+                    <p class="small text-muted mb-0 ps-4">Combine uppercase, lowercase, numbers and symbols.</p>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <h6 class="mb-0">Use a unique password</h6>
+                    </div>
+                    <p class="small text-muted mb-0 ps-4">Don't reuse passwords from other sites.</p>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <h6 class="mb-0">Keep your email secure</h6>
+                    </div>
+                    <p class="small text-muted mb-0 ps-4">We'll use your email for password resets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

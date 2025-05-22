@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found - Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="card">
+            <div class="card-body py-5">
+                <div class="mb-4 text-muted">
+                    <i class="fas fa-map-signs fa-5x"></i>
+                </div>
+                
+                <h1 class="display-4 fw-bold text-danger mb-4">404</h1>
+                <h2 class="mb-4">Page Not Found</h2>
+                
+                <p class="lead text-muted mb-5">
+                    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                </p>
+                
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-8">
+                        <div class="alert alert-light">
+                            <h5>Suggestions:</h5>
+                            <ul class="text-start">
+                                <li>Check the URL for spelling errors</li>
+                                <li>Return to the previous page</li>
+                                <li>Visit the dashboard or homepage</li>
+                                <li>Contact your administrator if this problem persists</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary me-2">
+                        <i class="fas fa-home me-1"></i> Return to Home
+                    </a>
+                    <button onclick="history.back()" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,680 @@
+{% extends "base.html" %}
+
+{% block title %}Analyze Resumes - Resume Analyzer{% endblock %}
+
+{% block styles %}
+<style>
+    .upload-zone {
+        border: 2px dashed #dee2e6;
+        border-radius: 10px;
+        padding: 3rem 1rem;
+        text-align: center;
+        background-color: #f8f9fa;
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+    
+    .upload-zone.highlight {
+        border-color: #007bff;
+        background-color: rgba(0, 123, 255, 0.05);
+    }
+    
+    .upload-icon {
+        font-size: 3rem;
+        color: #6c757d;
+        margin-bottom: 1rem;
+        transition: all 0.3s;
+    }
+    
+    .upload-zone:hover .upload-icon,
+    .upload-zone.highlight .upload-icon {
+        color: #007bff;
+    }
+    
+    .file-preview {
+        display: none;
+        margin-top: 1.5rem;
+    }
+    
+    .file-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .file-icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+    }
+    
+    .file-icon-pdf {
+        color: #dc3545;
+    }
+    
+    .file-icon-doc, .file-icon-docx {
+        color: #0d6efd;
+    }
+    
+    .file-icon-txt {
+        color: #6c757d;
+    }
+    
+    .file-info {
+        flex-grow: 1;
+    }
+    
+    .file-name {
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+        word-break: break-all;
+    }
+    
+    .file-size {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+    
+    .file-actions {
+        margin-left: 1rem;
+    }
+    
+    .file-remove {
+        cursor: pointer;
+        color: #dc3545;
+        transition: all 0.2s;
+    }
+    
+    .file-remove:hover {
+        color: #a71d2a;
+    }
+    
+    .upload-progress {
+        height: 5px;
+        margin-top: 0.5rem;
+        display: none;
+    }
+    
+    .job-description-counter {
+        font-size: 0.875rem;
+        color: #6c757d;
+        text-align: right;
+        margin-top: 0.25rem;
+    }
+    
+    .weights-explainer {
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+    }
+    
+    .form-progress {
+        transition: all 0.3s;
+        height: 3px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .step-indicator {
+        display: flex;
+        margin-bottom: 1.5rem;
+    }
+    
+    .step {
+        flex: 1;
+        text-align: center;
+        padding: 0.5rem;
+        position: relative;
+    }
+    
+    .step::before {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+        top: -12px;
+        left: calc(50% - 12px);
+        z-index: 2;
+        transition: all 0.3s;
+    }
+    
+    .step.active::before {
+        background-color: #007bff;
+    }
+    
+    .step.completed::before {
+        background-color: #28a745;
+    }
+    
+    .step::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: #dee2e6;
+        top: 0;
+        left: 50%;
+        z-index: 1;
+    }
+    
+    .step:first-child::after {
+        display: none;
+    }
+    
+    .step-label {
+        margin-top: 1rem;
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+    
+    .step.active .step-label {
+        color: #007bff;
+        font-weight: 500;
+    }
+    
+    .step.completed .step-label {
+        color: #28a745;
+    }
+    
+    .form-section {
+        transition: all 0.3s;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1 class="mb-0">Analyze Resumes</h1>
+        <p class="text-muted">Upload resumes and job description to find the best match</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form id="analyzeForm" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+            
+            <!-- Step indicators -->
+            <div class="step-indicator d-none d-md-flex">
+                <div class="step active" data-step="1">
+                    <div class="step-label">Job Information</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-label">Upload Resumes</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-label">Analysis Options</div>
+                </div>
+            </div>
+            
+            <!-- Progress bar for small screens -->
+            <div class="progress form-progress d-md-none">
+                <div class="progress-bar" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <!-- Form sections -->
+            <!-- Step 1: Job Information -->
+            <div class="form-section" id="section1">
+                <h4 class="mb-4">Job Information</h4>
+                
+                <div class="mb-4">
+                    {{ form.job_title.label(class="form-label") }}
+                    {{ form.job_title(class="form-control" + (" is-invalid" if form.job_title.errors else ""), placeholder="Enter the job title or position", id="jobTitle") }}
+                    <div class="invalid-feedback" id="jobTitleFeedback">
+                        {% if form.job_title.errors %}
+                            {% for error in form.job_title.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    {{ form.job_description.label(class="form-label") }}
+                    {{ form.job_description(class="form-control" + (" is-invalid" if form.job_description.errors else ""), placeholder="Paste the full job description here", rows="8", id="jobDescription") }}
+                    <div class="job-description-counter" id="jobDescriptionCounter">0/5000</div>
+                    <div class="invalid-feedback" id="jobDescriptionFeedback">
+                        {% if form.job_description.errors %}
+                            {% for error in form.job_description.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <small class="form-text text-muted">
+                        Include detailed requirements, responsibilities, and qualifications to improve matching accuracy.
+                    </small>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" id="nextToStep2">
+                        Next: Upload Resumes <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Step 2: Upload Resumes -->
+            <div class="form-section" id="section2" style="display: none;">
+                <h4 class="mb-4">Upload Resumes</h4>
+                
+                <div class="mb-4">
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="resumeFiles" name="resume_files" multiple accept=".pdf,.doc,.docx,.txt" class="d-none" required>
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h5>Drag and drop resume files here</h5>
+                        <p class="text-muted mb-0">or click to browse your computer</p>
+                        <small class="d-block mt-2 text-muted">Supported formats: PDF, DOC, DOCX, TXT (Max 10MB)</small>
+                    </div>
+                    
+                    <div class="progress upload-progress" id="uploadProgress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    
+                    <div class="invalid-feedback d-block" id="fileErrorMessage" style="display: none !important;"></div>
+                    
+                    <div class="file-preview" id="filePreview">
+                        <h6 class="mb-3">Selected Files:</h6>
+                        <div id="fileList"></div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" id="backToStep1">
+                        <i class="fas fa-arrow-left me-1"></i> Back: Job Information
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextToStep3">
+                        Next: Analysis Options <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Step 3: Analysis Options -->
+            <div class="form-section" id="section3" style="display: none;">
+                <h4 class="mb-4">Analysis Options</h4>
+                
+                <div class="mb-4">
+                    {{ form.weights_id.label(class="form-label") }}
+                    {{ form.weights_id(class="form-select" + (" is-invalid" if form.weights_id.errors else ""), id="weightsId") }}
+                    <div class="invalid-feedback">
+                        {% if form.weights_id.errors %}
+                            {% for error in form.weights_id.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="weights-explainer text-muted">
+                        Scoring weights determine how different aspects of resumes are evaluated against the job description.
+                        <a href="{{ url_for('main.weights') }}">Manage weights</a>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Ready to analyze!</strong> Click the button below to process the selected resumes.
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" id="backToStep2">
+                        <i class="fas fa-arrow-left me-1"></i> Back: Upload Resumes
+                    </button>
+                    <button type="submit" class="btn btn-success" id="submitAnalysis">
+                        <i class="fas fa-search me-1"></i> Analyze Resumes
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form sections and navigation
+        const section1 = document.getElementById('section1');
+        const section2 = document.getElementById('section2');
+        const section3 = document.getElementById('section3');
+        const steps = document.querySelectorAll('.step');
+        const progressBar = document.querySelector('.form-progress .progress-bar');
+        
+        // Job description character counter
+        const jobDescription = document.getElementById('jobDescription');
+        const jobDescriptionCounter = document.getElementById('jobDescriptionCounter');
+        
+        jobDescription.addEventListener('input', function() {
+            const charCount = this.value.length;
+            jobDescriptionCounter.textContent = `${charCount}/5000`;
+            
+            if (charCount > 5000) {
+                this.value = this.value.substring(0, 5000);
+                jobDescriptionCounter.textContent = '5000/5000';
+                jobDescriptionCounter.classList.add('text-danger');
+            } else {
+                jobDescriptionCounter.classList.remove('text-danger');
+            }
+        });
+        
+        // File upload
+        const uploadZone = document.getElementById('uploadZone');
+        const resumeFiles = document.getElementById('resumeFiles');
+        const fileList = document.getElementById('fileList');
+        const filePreview = document.getElementById('filePreview');
+        const fileErrorMessage = document.getElementById('fileErrorMessage');
+        
+        // Navigation buttons
+        const nextToStep2 = document.getElementById('nextToStep2');
+        const backToStep1 = document.getElementById('backToStep1');
+        const nextToStep3 = document.getElementById('nextToStep3');
+        const backToStep2 = document.getElementById('backToStep2');
+        const submitAnalysis = document.getElementById('submitAnalysis');
+        
+        // Validation variables
+        const jobTitle = document.getElementById('jobTitle');
+        const jobTitleFeedback = document.getElementById('jobTitleFeedback');
+        const jobDescriptionFeedback = document.getElementById('jobDescriptionFeedback');
+        
+        // Step 1 to 2 navigation
+        nextToStep2.addEventListener('click', function() {
+            // Validate step 1
+            let isValid = true;
+            
+            if (!jobTitle.value.trim()) {
+                jobTitle.classList.add('is-invalid');
+                jobTitleFeedback.textContent = 'Please enter a job title';
+                isValid = false;
+            } else {
+                jobTitle.classList.remove('is-invalid');
+            }
+            
+            if (!jobDescription.value.trim() || jobDescription.value.length < 50) {
+                jobDescription.classList.add('is-invalid');
+                jobDescriptionFeedback.textContent = 'Please enter a job description (at least 50 characters)';
+                isValid = false;
+            } else {
+                jobDescription.classList.remove('is-invalid');
+            }
+            
+            if (isValid) {
+                section1.style.display = 'none';
+                section2.style.display = 'block';
+                
+                // Update steps and progress
+                steps[0].classList.remove('active');
+                steps[0].classList.add('completed');
+                steps[1].classList.add('active');
+                
+                // Update progress bar for small screens
+                progressBar.style.width = '66%';
+                progressBar.setAttribute('aria-valuenow', '66');
+            }
+        });
+        
+        // Step 2 to 1 navigation
+        backToStep1.addEventListener('click', function() {
+            section2.style.display = 'none';
+            section1.style.display = 'block';
+            
+            // Update steps and progress
+            steps[1].classList.remove('active');
+            steps[0].classList.remove('completed');
+            steps[0].classList.add('active');
+            
+            // Update progress bar for small screens
+            progressBar.style.width = '33%';
+            progressBar.setAttribute('aria-valuenow', '33');
+        });
+        
+        // Step 2 to 3 navigation
+        nextToStep3.addEventListener('click', function() {
+            // Validate step 2
+            if (resumeFiles.files.length === 0) {
+                fileErrorMessage.style.display = 'block !important';
+                fileErrorMessage.textContent = 'Please select at least one resume file';
+                return;
+            }
+            
+            section2.style.display = 'none';
+            section3.style.display = 'block';
+            
+            // Update steps and progress
+            steps[1].classList.remove('active');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+            
+            // Update progress bar for small screens
+            progressBar.style.width = '100%';
+            progressBar.setAttribute('aria-valuenow', '100');
+        });
+        
+        // Step 3 to 2 navigation
+        backToStep2.addEventListener('click', function() {
+            section3.style.display = 'none';
+            section2.style.display = 'block';
+            
+            // Update steps and progress
+            steps[2].classList.remove('active');
+            steps[1].classList.remove('completed');
+            steps[1].classList.add('active');
+            
+            // Update progress bar for small screens
+            progressBar.style.width = '66%';
+            progressBar.setAttribute('aria-valuenow', '66');
+        });
+        
+        // File upload handling
+        uploadZone.addEventListener('click', function() {
+            resumeFiles.click();
+        });
+        
+        resumeFiles.addEventListener('change', handleFiles);
+        
+        // Drag and drop handling
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadZone.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            uploadZone.classList.add('highlight');
+        }
+        
+        function unhighlight() {
+            uploadZone.classList.remove('highlight');
+        }
+        
+        uploadZone.addEventListener('drop', handleDrop, false);
+        
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            resumeFiles.files = files;
+            handleFiles();
+        }
+        
+        function handleFiles() {
+            const files = resumeFiles.files;
+            
+            // Reset error message
+            fileErrorMessage.style.display = 'none !important';
+            fileErrorMessage.textContent = '';
+            
+            if (files.length > 0) {
+                filePreview.style.display = 'block';
+                fileList.innerHTML = '';
+                
+                // Validate files
+                let validFiles = true;
+                
+                Array.from(files).forEach(file => {
+                    // Check file type
+                    const extension = file.name.split('.').pop().toLowerCase();
+                    if (!['pdf', 'doc', 'docx', 'txt'].includes(extension)) {
+                        fileErrorMessage.style.display = 'block !important';
+                        fileErrorMessage.textContent = `File type not allowed: ${file.name}. Only PDF, DOC, DOCX, and TXT files are allowed.`;
+                        validFiles = false;
+                        return;
+                    }
+                    
+                    // Check file size
+                    if (file.size > 10 * 1024 * 1024) { // 10MB
+                        fileErrorMessage.style.display = 'block !important';
+                        fileErrorMessage.textContent = `File too large: ${file.name}. Maximum size is 10MB.`;
+                        validFiles = false;
+                        return;
+                    }
+                    
+                    // Create file preview item
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    
+                    // File icon based on type
+                    let iconClass = 'far fa-file';
+                    let iconColorClass = '';
+                    
+                    if (extension === 'pdf') {
+                        iconClass = 'far fa-file-pdf';
+                        iconColorClass = 'file-icon-pdf';
+                    } else if (extension === 'doc' || extension === 'docx') {
+                        iconClass = 'far fa-file-word';
+                        iconColorClass = 'file-icon-doc';
+                    } else if (extension === 'txt') {
+                        iconClass = 'far fa-file-alt';
+                        iconColorClass = 'file-icon-txt';
+                    }
+                    
+                    // Format file size
+                    const fileSize = formatFileSize(file.size);
+                    
+                    fileItem.innerHTML = `
+                        <div class="file-icon ${iconColorClass}">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <div class="file-info">
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${fileSize}</div>
+                        </div>
+                        <div class="file-actions">
+                            <i class="fas fa-times-circle file-remove" data-filename="${file.name}" title="Remove file"></i>
+                        </div>
+                    `;
+                    
+                    fileList.appendChild(fileItem);
+                });
+                
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.file-remove').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const filename = this.getAttribute('data-filename');
+                        removeFile(filename);
+                    });
+                });
+                
+                if (!validFiles) {
+                    // Reset file input if any invalid files
+                    resumeFiles.value = '';
+                    filePreview.style.display = 'none';
+                }
+            } else {
+                filePreview.style.display = 'none';
+            }
+        }
+        
+        function removeFile(filename) {
+            // Create a new FileList without the removed file
+            const dt = new DataTransfer();
+            
+            Array.from(resumeFiles.files).forEach(file => {
+                if (file.name !== filename) {
+                    dt.items.add(file);
+                }
+            });
+            
+            resumeFiles.files = dt.files;
+            handleFiles();
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+        
+        // Form submission handling
+        const analyzeForm = document.getElementById('analyzeForm');
+        
+        analyzeForm.addEventListener('submit', function(event) {
+            // Validate all form fields
+            let isValid = true;
+            
+            // Step 1 validation
+            if (!jobTitle.value.trim()) {
+                jobTitle.classList.add('is-invalid');
+                isValid = false;
+            }
+            
+            if (!jobDescription.value.trim() || jobDescription.value.length < 50) {
+                jobDescription.classList.add('is-invalid');
+                isValid = false;
+            }
+            
+            // Step 2 validation
+            if (resumeFiles.files.length === 0) {
+                fileErrorMessage.style.display = 'block !important';
+                fileErrorMessage.textContent = 'Please select at least one resume file';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                event.preventDefault();
+                return;
+            }
+            
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            // Simulate upload progress (in a real app, you'd use AJAX with progress events)
+            const uploadProgress = document.getElementById('uploadProgress');
+            const progressBar = uploadProgress.querySelector('.progress-bar');
+            
+            uploadProgress.style.display = 'block';
+            let progress = 0;
+            
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                progressBar.setAttribute('aria-valuenow', progress);
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                }
+            }, 100);
+        });
+        
+        // Initialize job description counter on page load
+        if (jobDescription.value) {
+            jobDescriptionCounter.textContent = `${jobDescription.value.length}/5000`;
+        }
+    });
+</script>
+{% endblock %}

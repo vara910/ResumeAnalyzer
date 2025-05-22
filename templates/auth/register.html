@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-user-plus me-2"></i>Create an Account</h5>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{{ url_for('auth.register') }}" novalidate>
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="mb-3">
+                        {{ form.username.label(class="form-label") }}
+                        {{ form.username(class="form-control" + (" is-invalid" if form.username.errors else ""), placeholder="Choose a username", autocomplete="username") }}
+                        <small class="form-text text-muted">Username must be 3-64 characters and start with a letter.</small>
+                        {% if form.username.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.username.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else ""), placeholder="Enter your email", type="email") }}
+                        <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.full_name.label(class="form-label") }}
+                        {{ form.full_name(class="form-control" + (" is-invalid" if form.full_name.errors else ""), placeholder="Enter your full name (optional)") }}
+                        {% if form.full_name.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.full_name.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-3">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control" + (" is-invalid" if form.password.errors else ""), placeholder="Create a password", autocomplete="new-password") }}
+                        <div class="password-requirements mt-2">
+                            <small class="d-block mb-1">Password must:</small>
+                            <ul class="small text-muted ps-4 mb-0">
+                                <li>Be at least 8 characters long</li>
+                                <li>Include at least one uppercase letter</li>
+                                <li>Include at least one lowercase letter</li>
+                                <li>Include at least one number</li>
+                            </ul>
+                        </div>
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        {{ form.password2.label(class="form-label") }}
+                        {{ form.password2(class="form-control" + (" is-invalid" if form.password2.errors else ""), placeholder="Confirm your password", autocomplete="new-password") }}
+                        {% if form.password2.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in form.password2.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                    
+                    <div class="mt-3 text-center">
+                        <p>
+                            Already have an account? 
+                            <a href="{{ url_for('auth.login') }}">Login here</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Password strength visual feedback
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordField = document.getElementById('password');
+        const requirements = document.querySelectorAll('.password-requirements ul li');
+        
+        passwordField.addEventListener('input', function() {
+            const password = this.value;
+            
+            // Check length
+            if (password.length >= 8) {
+                requirements[0].classList.add('text-success');
+                requirements[0].classList.remove('text-muted');
+            } else {
+                requirements[0].classList.remove('text-success');
+                requirements[0].classList.add('text-muted');
+            }
+            
+            // Check uppercase
+            if (/[A-Z]/.test(password)) {
+                requirements[1].classList.add('text-success');
+                requirements[1].classList.remove('text-muted');
+            } else {
+                requirements[1].classList.remove('text-success');
+                requirements[1].classList.add('text-muted');
+            }
+            
+            // Check lowercase
+            if (/[a-z]/.test(password)) {
+                requirements[2].classList.add('text-success');
+                requirements[2].classList.remove('text-muted');
+            } else {
+                requirements[2].classList.remove('text-success');
+                requirements[2].classList.add('text-muted');
+            }
+            
+            // Check number
+            if (/[0-9]/.test(password)) {
+                requirements[3].classList.add('text-success');
+                requirements[3].classList.remove('text-muted');
+            } else {
+                requirements[3].classList.remove('text-success');
+                requirements[3].classList.add('text-muted');
+            }
+        });
+    });
+</script>
+{% endblock %}
+

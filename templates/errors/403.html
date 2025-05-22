@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Access Denied - Resume Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="card">
+            <div class="card-body py-5">
+                <div class="mb-4 text-muted">
+                    <i class="fas fa-lock fa-5x"></i>
+                </div>
+                
+                <h1 class="display-4 fw-bold text-danger mb-4">403</h1>
+                <h2 class="mb-4">Access Denied</h2>
+                
+                <p class="lead text-muted mb-5">
+                    You don't have permission to access this page. This could be because you need to log in or your account doesn't have the necessary permissions.
+                </p>
+                
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-8">
+                        <div class="alert alert-light">
+                            <h5>Possible reasons:</h5>
+                            <ul class="text-start">
+                                <li>You need to log in to access this page</li>
+                                <li>Your account doesn't have the required permissions</li>
+                                <li>Your session may have expired</li>
+                                <li>You're trying to access another user's data</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary me-2">
+                            <i class="fas fa-tachometer-alt me-1"></i> Go to Dashboard
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-primary me-2">
+                            <i class="fas fa-sign-in-alt me-1"></i> Log In
+                        </a>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-primary me-2">
+                            <i class="fas fa-user-plus me-1"></i> Register
+                        </a>
+                    {% endif %}
+                    <button onclick="history.back()" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i> Go Back
+                    </button>
+                </div>
+                
+                <div class="mt-4 border-top pt-4">
+                    <h5 class="mb-3">Need Help?</h5>
+                    <p class="text-muted small">
+                        If you believe you should have access to this resource, please contact the administrator with the details below.
+                    </p>
+                    <a href="mailto:support@resumeanalyzer.com?subject=Access Issue" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-envelope me-1"></i> Contact Support
+                    </a>
+                    {% if requested_url %}
+                    <p class="mt-3 small text-muted">
+                        Requested URL: {{ requested_url }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

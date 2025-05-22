@@ -1,0 +1,1425 @@
+2025-05-22 07:37:17,056 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 07:37:17,056 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 07:37:30,666 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:37:30] "GET / HTTP/1.1" 200 -
+2025-05-22 07:37:32,095 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:37:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-22 07:37:40,646 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:37:40] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 07:38:15,438 - app - ERROR - Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+2025-05-22 07:38:15,454 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:38:15,476 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:15] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
+2025-05-22 07:38:15,537 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:38:21,989 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:21] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 07:38:24,857 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:24] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 07:38:27,242 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:27] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-05-22 07:38:27,281 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:27] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 07:38:37,344 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:38:37] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 07:39:20,451 - app - ERROR - Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+2025-05-22 07:39:20,455 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:39:20,462 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:39:20] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
+2025-05-22 07:39:20,490 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\ResumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:39:23,699 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:39:23] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-22 07:41:51,899 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 07:41:51,901 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 07:41:58,132 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:41:58] "GET / HTTP/1.1" 200 -
+2025-05-22 07:41:59,620 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:41:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-22 07:42:00,809 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:42:00] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 07:42:13,691 - app - ERROR - Exception on /auth/register [POST]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+2025-05-22 07:42:13,722 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:42:13,757 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:42:13] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
+2025-05-22 07:42:13,888 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\auth.py", line 97, in register
+    if form.validate_on_submit():
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:42:39,399 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 07:42:39,400 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 07:42:43,904 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:42:43] "GET / HTTP/1.1" 200 -
+2025-05-22 07:42:46,564 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:42:46] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 07:43:10,800 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:43:10] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+2025-05-22 07:43:10,980 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:43:10] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 07:43:24,890 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:43:24] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-05-22 07:43:25,067 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:43:25] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 07:43:36,962 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:43:36] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 07:46:56,517 - resume_analyzer.utils - INFO - Extracted 2858 characters from uploads/10e2b69e-b335-48a7-a861-f30841022ce9_Lokesharay_Resume.docx
+2025-05-22 07:46:56,578 - resume_analyzer - ERROR - Error preprocessing text: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN/nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\share\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\lib\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+
+2025-05-22 07:46:56,593 - resume_analyzer - ERROR - Error preprocessing text: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN/nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\share\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\lib\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+
+2025-05-22 07:46:56,715 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:46:56] "[32mPOST /analyze HTTP/1.1[0m" 302 -
+2025-05-22 07:46:56,859 - app - ERROR - Exception on /analysis/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2025-05-22 07:46:56,879 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:46:56,905 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:46:56] "[35m[1mGET /analysis/1 HTTP/1.1[0m" 500 -
+2025-05-22 07:46:56,984 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:47:00,568 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:47:00] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 07:47:25,653 - werkzeug - INFO - 127.0.0.1 - - [22/May/2025 07:47:25] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 07:51:55,716 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 07:51:55,718 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 07:52:04,274 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:04] "POST /auth/register HTTP/1.1" 200 -
+2025-05-22 07:52:08,858 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:08] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 07:52:21,263 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:21] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-05-22 07:52:21,375 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:21] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 07:52:29,315 - app - ERROR - Exception on /analysis/1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2025-05-22 07:52:29,333 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:52:29,346 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:29] "[35m[1mGET /analysis/1 HTTP/1.1[0m" 500 -
+2025-05-22 07:52:29,386 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:52:37,137 - app - ERROR - Exception on /history [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 534, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+2025-05-22 07:52:37,153 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:52:37,156 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:37] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2025-05-22 07:52:37,169 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 534, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 07:52:42,114 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:52:42] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 07:53:18,150 - resume_analyzer.utils - INFO - Extracted 2858 characters from uploads/bba1471b-1769-490c-a5bc-e86da4342ee8_Lokesharay_Resume.docx
+2025-05-22 07:53:18,170 - resume_analyzer - ERROR - Error preprocessing text: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN/nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\share\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\lib\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+
+2025-05-22 07:53:18,185 - resume_analyzer - ERROR - Error preprocessing text: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN/nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\share\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Local\\Programs\\Python\\Python38\\lib\\nltk_data'
+    - 'C:\\Users\\vara.DESKTOP-OIPRRSN\\AppData\\Roaming\\nltk_data'
+    - 'C:\\nltk_data'
+    - 'D:\\nltk_data'
+    - 'E:\\nltk_data'
+**********************************************************************
+
+2025-05-22 07:53:18,257 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:53:18] "[32mPOST /analyze HTTP/1.1[0m" 302 -
+2025-05-22 07:53:18,338 - app - ERROR - Exception on /analysis/2 [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2025-05-22 07:53:18,341 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 07:53:18,345 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 07:53:18] "[35m[1mGET /analysis/2 HTTP/1.1[0m" 500 -
+2025-05-22 07:53:18,360 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 460, in analysis_results
+    return render_template('results.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\results.html", line 631, in template
+    data: [{{ high_matches }}, {{ medium_matches }}, {{ low_matches }}],
+jinja2.exceptions.TemplateSyntaxError: Unexpected end of template. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 278, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'now' is undefined
+2025-05-22 08:03:55,582 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 08:03:55,584 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 08:04:02,360 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:02] "GET / HTTP/1.1" 200 -
+2025-05-22 08:04:03,046 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:03] "GET / HTTP/1.1" 200 -
+2025-05-22 08:04:04,006 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-22 08:04:24,101 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:24] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 08:04:24,169 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:24] "GET /auth/register HTTP/1.1" 200 -
+2025-05-22 08:04:50,198 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.181.222:5000
+2025-05-22 08:04:50,198 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-22 08:04:55,931 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:55] "GET / HTTP/1.1" 200 -
+2025-05-22 08:04:55,990 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:55] "GET / HTTP/1.1" 200 -
+2025-05-22 08:04:58,822 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:58] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 08:04:58,877 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:04:58] "GET /auth/login HTTP/1.1" 200 -
+2025-05-22 08:05:09,550 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:05:09] "[32mPOST /auth/login HTTP/1.1[0m" 302 -
+2025-05-22 08:05:09,619 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:05:09] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:05:10,511 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:05:10] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:05:33,790 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:05:33] "GET /analysis/2 HTTP/1.1" 200 -
+2025-05-22 08:05:33,912 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:05:33] "GET /analysis/2 HTTP/1.1" 200 -
+2025-05-22 08:06:10,712 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:10] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 08:06:10,786 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:10] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 08:06:17,988 - app - ERROR - Exception on /history [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+2025-05-22 08:06:18,005 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:06:18,019 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:18] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2025-05-22 08:06:18,064 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:06:18,084 - app - ERROR - Exception on /history [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+2025-05-22 08:06:18,086 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:06:18,089 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:18] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2025-05-22 08:06:18,101 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:06:20,923 - app - ERROR - Exception on /weights [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 555, in weights
+    return render_template('weights.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: weights.html
+2025-05-22 08:06:20,925 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:06:20,928 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:20] "[35m[1mGET /weights HTTP/1.1[0m" 500 -
+2025-05-22 08:06:20,943 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 555, in weights
+    return render_template('weights.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: weights.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:06:20,991 - app - ERROR - Exception on /weights [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 555, in weights
+    return render_template('weights.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: weights.html
+2025-05-22 08:06:20,994 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:06:20,999 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:20] "[35m[1mGET /weights HTTP/1.1[0m" 500 -
+2025-05-22 08:06:21,016 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 555, in weights
+    return render_template('weights.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: weights.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:06:23,693 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:23] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-22 08:06:23,734 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:23] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:06:23,845 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:23] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:06:28,962 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:28] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 08:06:29,021 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:06:29] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 08:08:19,137 - resume_analyzer.utils - INFO - Extracted 2119 characters from uploads/2553b74a-f855-450c-b436-e4cc5d36cf08_Vinayak_RESUME.pdf
+2025-05-22 08:08:20,790 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:08:20] "[32mPOST /analyze HTTP/1.1[0m" 302 -
+2025-05-22 08:08:20,818 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:08:20] "GET /analysis/3 HTTP/1.1" 200 -
+2025-05-22 08:08:20,875 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:08:20] "GET /analysis/3 HTTP/1.1" 200 -
+2025-05-22 08:09:00,986 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:00] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-22 08:09:01,029 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:01] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:09:01,147 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:01] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:09:22,466 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:22] "[32mGET / HTTP/1.1[0m" 302 -
+2025-05-22 08:09:22,520 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:22] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:09:22,634 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:22] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:09:26,806 - app - ERROR - Exception on /history [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+2025-05-22 08:09:26,810 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:09:26,813 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:26] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2025-05-22 08:09:26,829 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:09:26,889 - app - ERROR - Exception on /history [GET]
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+2025-05-22 08:09:26,891 - resume_analyzer - ERROR - Internal server error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+2025-05-22 08:09:26,893 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:26] "[35m[1mGET /history HTTP/1.1[0m" 500 -
+2025-05-22 08:09:26,904 - werkzeug - ERROR - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "app.py", line 540, in history
+    return render_template('history.html',
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: history.html
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 370, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\werkzeug\serving.py", line 331, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 823, in handle_exception
+    server_error = self.ensure_sync(handler)(server_error)
+  File "app.py", line 284, in internal_server_error
+    return render_template('errors/500.html'), 500
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\templating.py", line 131, in _render
+    rv = template.render(context)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\base.html", line 213, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\desktop\resumeAnalyzer\templates\errors\500.html", line 53, in block 'content'
+    Error ID: {{ error_id if error_id else 'N/A' }} | Time: {{ now.strftime('%Y-%m-%d %H:%M:%S') }}
+  File "C:\Users\vara.DESKTOP-OIPRRSN\AppData\Local\Programs\Python\Python38\lib\site-packages\jinja2\utils.py", line 92, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'function object' has no attribute 'strftime'
+2025-05-22 08:09:27,977 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:27] "GET /dashboard HTTP/1.1" 200 -
+2025-05-22 08:09:29,064 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:29] "GET /analyze HTTP/1.1" 200 -
+2025-05-22 08:09:29,130 - werkzeug - INFO - 192.168.181.222 - - [22/May/2025 08:09:29] "GET /analyze HTTP/1.1" 200 -
