@@ -169,26 +169,6 @@ The application can be configured using environment variables or by editing the 
 5. **Weighted Scoring**: Custom weights are applied to different aspects of the match
 6. **Results Visualization**: Results are displayed with detailed breakdowns and visualizations
 
-## 📊 Features in Detail
-
-### Resume Analysis
-- Advanced text extraction from multiple file formats
-- Customizable scoring weights for different criteria
-- Intelligent keyword matching and scoring
-- Visual representation of match percentages
-
-### User Management
-- Secure user authentication
-- Profile management
-- Analysis history tracking
-- Custom scoring weights per user
-
-### Analytics & Reporting
-- Detailed match analysis
-- Visual charts and graphs
-- Exportable reports
-- Historical data tracking
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
