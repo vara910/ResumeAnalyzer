@@ -1,8 +1,5 @@
 # Python package
 # Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 trigger:
 - master
 
@@ -26,12 +23,28 @@ steps:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
 
+# 🔧 Install system dependencies required by textract and others
+- script: |
+    sudo apt-get update
+    sudo apt-get install -y \
+      poppler-utils \
+      tesseract-ocr \
+      libxml2-dev \
+      libxslt1-dev \
+      antiword \
+      unrtf \
+      python3-dev \
+      build-essential
+  displayName: 'Install system dependencies'
+
+# 📦 Install Python dependencies
 - script: |
     python -m pip install --upgrade pip
     pip install -r requirements.txt
-  displayName: 'Install dependencies'
+  displayName: 'Install Python dependencies'
 
+# 🧪 Run tests
 - script: |
     pip install pytest pytest-azurepipelines
     pytest
-  displayName: 'pytest'
+  displayName: 'Run tests with pytest'
